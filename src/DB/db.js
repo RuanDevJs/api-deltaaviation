@@ -1,13 +1,6 @@
-const dotenv = require("dotenv");
 const mongo = require("mongoose");
 
-dotenv.config({
-    path: "../../.env"
-})
-
-dotenv.config();
-
-mongo.connect(process.env.DB_URL)
+mongo.connect("mongodb+srv://ruan:V99cvirzdD4AqUTB@cluster0.i3z0l.mongodb.net/myFirstDatabase?retryWrites=true")
 .then(res => {
     console.debug("DB", "Connected");
 })
