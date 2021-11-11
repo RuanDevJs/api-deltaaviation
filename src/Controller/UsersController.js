@@ -30,7 +30,7 @@ class UsersController {
 
         try{
             const rows = await UserRepositores.update({nome, email, senha}, id);
-            res.status(200).json(rows);
+            res.status(200).json("Updated");
         }catch(e){
             return res.status(400).json({erro: "User does not exists!"});
         }
