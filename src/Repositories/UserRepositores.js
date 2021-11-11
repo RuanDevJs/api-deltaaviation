@@ -15,6 +15,15 @@ class UsersRepositores {
         return rows;
     }
 
+    async findById(id){
+        try{
+            const rows = await UsersModels.find({_id: id});
+            return rows;
+        }catch (e){
+            return {error: "User not found"};
+        }
+    }
+
     async create({nome, email, senha}){
         try{
             const usuario = new UsersModels({
@@ -42,6 +51,23 @@ class UsersRepositores {
         }
     }
 
+    async delete(id){
+        try{
+            await UsersModels.findByIdAndDelete(id);
+            return rows;
+        }catch(e){
+            return e;
+        }
+    }
+
+    async login({email, senha}){
+        try{
+            const rows = await UsersModels.find({email, senha});
+            return rows;
+        }catch (e){
+            return e;
+        }
+    }
 }
 
 module.exports = new UsersRepositores();
