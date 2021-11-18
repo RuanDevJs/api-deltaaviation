@@ -1,6 +1,15 @@
 const UserRepositores = require("../Repositories/UserRepositores");
 
 class UsersController {
+    async index(req, res){
+        try{
+            const rows = await UserRepositores.findAll();
+            res.status(200).json(rows);
+        }catch(e){
+            res.status(400).json(e);
+        }
+    }
+
     async show(req, res) {
         try {
             const {id} = req.params;
